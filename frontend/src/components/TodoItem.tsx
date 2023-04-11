@@ -58,6 +58,8 @@ const DeleteButton = styled.button`
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease-in-out;
 
   &:hover {
     background-color: #cc0000;

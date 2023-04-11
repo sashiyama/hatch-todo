@@ -40,20 +40,23 @@ const Input = styled.input`
   font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 4px;
+  background-color: #f5f5f5;
 `;
 
 const AddButton = styled.button`
-  background-color: #4c4c4c;
+  background-color: #1e88e5;
   color: #fff;
   font-size: 1rem;
   padding: 0.5rem 1rem;
   margin-left: 1rem;
   border: none;
-  border-radius: 4px;p
+  border-radius: 4px;
   cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease-in-out;
 
   &:hover {
-    background-color: #3a3a3a;
+    background-color: #1565c0;
   }
 `;
 

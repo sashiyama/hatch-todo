@@ -94,13 +94,15 @@ const Tab = styled.button<{ isActive: boolean }>`
   flex: 1;
   padding: 1rem;
   font-size: 1.2rem;
-  background-color: ${({ isActive }) => (isActive ? '#efefef' : '#ffffff')};
-  border: 1px solid #eee;
+  background-color: ${({ isActive }) => (isActive ? '#1e88e5' : '#ffffff')};
+  color: ${({ isActive }) => (isActive ? '#ffffff' : '#1e88e5')};
+  border: 1px solid #1e88e5;
   cursor: pointer;
   outline: none;
-  transition: background-color 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+
   &:hover {
-    background-color: #efefef;
+    background-color: ${({ isActive }) => (isActive ? '#1e88e5' : '#e3f2fd')};
   }
 `;
 
