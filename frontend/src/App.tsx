@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
+import { GlobalStyle } from './styles/GlobalStyle';
 import Header from './components/Header';
 import TodoList from './components/TodoList';
 import TodoForm from './components/TodoForm';
@@ -42,16 +44,27 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="App">
-      <Header />
-      <TodoForm addTodo={addTodo} />
-      <TodoList
-        todos={todos}
-        toggleCompleted={toggleCompleted}
-        deleteTodo={deleteTodo}
-      />
-    </div>
+    <>
+      <GlobalStyle />
+      <AppContainer>
+        <Header />
+        <TodoForm addTodo={addTodo} />
+        <TodoList
+          todos={todos}
+          toggleCompleted={toggleCompleted}
+          deleteTodo={deleteTodo}
+        />
+      </AppContainer>
+    </>
   );
 };
+
+const AppContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+`;
 
 export default App;
