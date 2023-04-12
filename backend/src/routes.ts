@@ -44,4 +44,13 @@ router.delete('/todos/:id', async (req, res) => {
   }
 });
 
+router.delete('/todos', async (_req, res) => {
+  try {
+    const rowCount = await todoModel.deleteAllTodos();
+    res.json({ rowCount });
+  } catch (error) {
+    res.status(500).json({ message: 'Error deleting todo' });
+  }
+});
+
 export default router;

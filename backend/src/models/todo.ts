@@ -7,7 +7,7 @@ interface Todo {
 }
 
 const getAllTodos = async (): Promise<Todo[]> => {
-  const result = await pool.query('SELECT * FROM todos');
+  const result = await pool.query(getTodosQuery);
   return result.rows;
 };
 
@@ -30,9 +30,32 @@ const deleteTodo = async (id: number): Promise<number> => {
   return result.rowCount;
 };
 
+const deleteAllTodos = async (): Promise<number> => {
+  const result = await pool.query('DELETE FROM todos');
+  return result.rowCount;
+};
+
+const getTodosQuery = `
+(
+    SELECT *
+    FROM todos
+    WHERE completed = false
+)
+UNION ALL
+(
+    SELECT *
+    FROM todos
+    WHERE completed = true
+    ORDER BY updated_at DESC
+    LIMIT 10
+)
+ORDER BY completed ASC, updated_at DESC;
+`
+
 export default {
   getAllTodos,
   createTodo,
   updateTodo,
   deleteTodo,
+  deleteAllTodos,
 };

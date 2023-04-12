@@ -16,7 +16,11 @@ const TodoForm: React.FC<TodoFormProps> = ({ addTodo }) => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>  <Input
+    <Form
+      onSubmit={handleSubmit}
+      data-testid="todo-form"
+    >
+      <Input
         type="text"
         placeholder="Add a new task"
         value={description}

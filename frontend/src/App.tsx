@@ -17,6 +17,12 @@ const App: React.FC = () => {
 
   useEffect(() => {
     fetchTodos();
+
+    const intervalId = setInterval(() => {
+      fetchTodos();
+    }, 60 * 1000);
+
+    return () => clearInterval(intervalId);
   }, []);
 
   const fetchTodos = async () => {
@@ -43,6 +49,11 @@ const App: React.FC = () => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
+  const deleteAllTodos = async () => {
+    await axios.delete('/todos');
+    setTodos([]);
+  };
+
   return (
     <>
       <GlobalStyle />
@@ -53,6 +64,7 @@ const App: React.FC = () => {
           todos={todos}
           toggleCompleted={toggleCompleted}
           deleteTodo={deleteTodo}
+          deleteAllTodos={deleteAllTodos}
         />
       </AppContainer>
     </>

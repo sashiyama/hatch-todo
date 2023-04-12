@@ -22,6 +22,7 @@ const TodoItem: React.FC<TodoItemProps> = ({ todo, style, toggleCompleted, delet
         type="checkbox"
         checked={todo.completed}
         onChange={() => toggleCompleted(todo.id)}
+        aria-label="Complete task"
       />
       <Description completed={todo.completed}>{todo.description}</Description>
       <DeleteButton onClick={() => deleteTodo(todo.id)}>Delete</DeleteButton>
