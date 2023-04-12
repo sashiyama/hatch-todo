@@ -15,6 +15,6 @@ END;
 $$ LANGUAGE plpgsql;
 
 CREATE TRIGGER tr_update_updated_at
-BEFORE UPDATE ON my_table
+BEFORE UPDATE ON todos
 FOR EACH ROW
 EXECUTE FUNCTION update_updated_at();
